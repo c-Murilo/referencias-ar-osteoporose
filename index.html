@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Referências AR e Osteoporose</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#f5f7f8;--ink:#15232b;--muted:#5a6b74;--line:#d7e0e4;--accent:#1f6f8b;--chip:#e3eef2;--card:#ffffff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f171b;--ink:#e4ecef;--muted:#93a6ae;--line:#24343b;--accent:#6fb8d2;--chip:#1a2a31;--card:#141f24;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f171b;--ink:#e4ecef;--muted:#93a6ae;--line:#24343b;--accent:#6fb8d2;--chip:#1a2a31;--card:#141f24;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 "IBM Plex Sans",system-ui,sans-serif;padding:0 16px}
+.wrap{max-width:780px;margin:0 auto;padding-block:48px 64px}
+.eyebrow{font:12px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font:600 clamp(28px,5vw,40px)/1.15 Fraunces,Georgia,serif;margin:8px 0 12px;text-wrap:balance}
+.lede{color:var(--muted);max-width:60ch;margin:0}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 8px}
+input{flex:1;min-width:0;font:inherit;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+input:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+ol{list-style:none;padding:0;margin:0}
+li{display:grid;grid-template-columns:2.5rem 1fr;gap:4px 12px;padding:22px 0;border-bottom:1px solid var(--line)}
+.n{font:500 22px Fraunces,Georgia,serif;color:var(--accent);font-variant-numeric:tabular-nums}
+h2{font:600 18px/1.35 Fraunces,Georgia,serif;margin:2px 0 6px;text-wrap:balance}
+.cit{color:var(--muted);font-size:14px;margin:0 0 10px}
+.row{grid-column:2;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chip,button{font:12px "IBM Plex Mono",monospace;background:var(--chip);color:var(--ink);border:0;border-radius:6px;padding:4px 9px;text-decoration:none;cursor:pointer}
+a.chip{color:var(--accent)} a.chip:hover,button:hover{filter:brightness(.95)}
+.tag{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.empty{color:var(--muted);padding:24px 0}
+footer{margin-top:32px;font-size:13px;color:var(--muted)}
+@media(max-width:480px){li{grid-template-columns:1fr}.row{grid-column:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="eyebrow">Referências bibliográficas · Pôster</div>
+<h1>Osteoporose na Artrite Reumatoide</h1>
+<p class="lede">As 15 referências citadas no banner, no formato Vancouver, com links diretos para DOI e PubMed.</p>
+<div class="tools"><input id="q" type="search" placeholder="Buscar por autor, tema, revista ou ano…" aria-label="Buscar"><button id="all">Copiar todas</button></div>
+<ol id="list"></ol>
+<p class="empty" id="empty" hidden>Nenhuma referência encontrada.</p>
+<footer>Clique em “Copiar” para levar a citação completa para a área de transferência.</footer>
+</div>
+<script>
+const R=[
+["Pharmacological Management of Osteoporosis in Rheumatoid Arthritis Patients: A Review of the Literature and Practical Guide","Raterman HG, Lems WF. Pharmacological Management of Osteoporosis in Rheumatoid Arthritis Patients: A Review of the Literature and Practical Guide. Drugs Aging. 2019 Dec;36(12):1061-1072.","10.1007/s40266-019-00714-4","31541358","PMC6884430",2019],
+["Management of osteoporosis in rheumatoid arthritis patients","Hoes JN, Bultink IE, Lems WF. Management of osteoporosis in rheumatoid arthritis patients. Expert Opin Pharmacother. 2015 Mar;16(4):559-71. Epub 2015 Jan 27.","10.1517/14656566.2015.997709","25626121","",2015],
+["Osteoporosis in patients with rheumatoid arthritis: an update in epidemiology, pathogenesis, and fracture prevention","Raterman HG, Bultink IE, Lems WF. Osteoporosis in patients with rheumatoid arthritis: an update in epidemiology, pathogenesis, and fracture prevention. Expert Opin Pharmacother. 2020 Oct;21(14):1725-1737. Epub 2020 Jul 1.","10.1080/14656566.2020.1787381","32605401","",2020],
+["Rheumatoid Arthritis — Common Origins, Divergent Mechanisms","Gravallese EM, Firestein GS. Rheumatoid Arthritis — Common Origins, Divergent Mechanisms. N Engl J Med. 2023;388(6):529-542.","10.1056/NEJMra2103726","","",2023],
+["Mechanisms of joint destruction in rheumatoid arthritis — immune cell–fibroblast–bone interactions","Komatsu N, Takayanagi H. Mechanisms of joint destruction in rheumatoid arthritis - immune cell-fibroblast-bone interactions. Nat Rev Rheumatol. 2022 Jul;18(7):415-429. Epub 2022 Jun 15.","10.1038/s41584-022-00793-5","35705856","",2022],
+["The interplay of rheumatoid arthritis and osteoporosis: exploring the pathogenesis and pharmacological approaches","Gupta N, Kanwar N, Arora A, Khatri K, Kanwal A. The interplay of rheumatoid arthritis and osteoporosis: exploring the pathogenesis and pharmacological approaches. Clin Rheumatol. 2024 May;43(5):1421-1433. Epub 2024 Mar 18.","10.1007/s10067-024-06932-5","38499817","",2024],
+["Osteoporosis: A Review","Morin SN, Leslie WD, Schousboe JT. Osteoporosis: A Review. JAMA. 2025;334(10):894-907.","10.1001/jama.2025.6003","","",2025],
+["Pathogenetic insights from the treatment of rheumatoid arthritis","McInnes IB, Schett G. Pathogenetic insights from the treatment of rheumatoid arthritis. Lancet. 2017 Jun 10;389(10086):2328-2337.","10.1016/S0140-6736(17)31472-1","28612747","",2017],
+["Rheumatoid arthritis and osteoimmunology: The adverse impact of a deregulated immune system on bone metabolism","Andreev D, Kachler K, Schett G, Bozec A. Rheumatoid arthritis and osteoimmunology: The adverse impact of a deregulated immune system on bone metabolism. Bone. 2022 Sep;162:116468. Epub 2022 Jun 8.","10.1016/j.bone.2022.116468","35688359","",2022],
+["Anti-citrullinated protein antibodies and high levels of rheumatoid factor are associated with systemic bone loss in patients with early untreated rheumatoid arthritis","Bugatti S, Bogliolo L, Vitolo B, Manzo A, Montecucco C, Caporali R. Anti-citrullinated protein antibodies and high levels of rheumatoid factor are associated with systemic bone loss in patients with early untreated rheumatoid arthritis. Arthritis Res Ther. 2016 Oct 6;18(1):226.","10.1186/s13075-016-1116-9","27716332","PMC5052789",2016],
+["Association Between Bone Mineral Density and Autoantibodies in Patients With Rheumatoid Arthritis","Amkreutz JAMP, de Moel EC, Theander L, Willim M, Heimans L, Nilsson JÅ, Karlsson MK, Huizinga TWJ, Åkesson KE, Jacobsson LTH, Allaart CF, Turesson C, van der Woude D. Association Between Bone Mineral Density and Autoantibodies in Patients With Rheumatoid Arthritis. Arthritis Rheumatol. 2021 Jun;73(6):921-930. Epub 2021 May 10.","10.1002/art.41623","33314699","PMC8251600",2021],
+["Impact of Anti-Citrullinated Protein Antibodies on Progressive Systemic Bone Mineral Density Loss in Patients With Early Rheumatoid Arthritis After Two Years of Treat-to-Target","Bugatti S, Bogliolo L, Manzo A, De Stefano L, Delvino P, Motta F, Montecucco C. Impact of Anti-Citrullinated Protein Antibodies on Progressive Systemic Bone Mineral Density Loss in Patients With Early Rheumatoid Arthritis After Two Years of Treat-to-Target. Front Immunol. 2021 Jun 14;12:701922.","10.3389/fimmu.2021.701922","34194443","PMC8236980",2021],
+["Acute Effects of Glucocorticoid Treatment, TNFα or IL-6R Blockade on Bone Turnover Markers and Wnt Inhibitors in Early Rheumatoid Arthritis: A Pilot Study","Fassio A, Adami G, Giollo A, Viapiana O, Malavolta N, Saviola G, Bortolotti R, Idolazzi L, Bertoldo F, Rossini M, Gatti D. Acute Effects of Glucocorticoid Treatment, TNFα or IL-6R Blockade on Bone Turnover Markers and Wnt Inhibitors in Early Rheumatoid Arthritis: A Pilot Study. Calcif Tissue Int. 2020 Apr;106(4):371-377. Epub 2020 Jan 2.","10.1007/s00223-019-00649-3","31897527","",2020],
+["Bone Metabolism and RANKL/OPG Ratio in Rheumatoid Arthritis Women Treated with TNF-α Inhibitors","Jura-Półtorak A, Szeremeta A, Olczyk K, Zoń-Giebel A, Komosińska-Vassev K. Bone Metabolism and RANKL/OPG Ratio in Rheumatoid Arthritis Women Treated with TNF-α Inhibitors. J Clin Med. 2021 Jun 29;10(13):2905.","10.3390/jcm10132905","34209821","PMC8267676",2021],
+["Osteoporosis in Rheumatoid Arthritis: Dangerous Liaisons","Llorente I, García-Castañeda N, Valero C, González-Álvaro I, Castañeda S. Osteoporosis in Rheumatoid Arthritis: Dangerous Liaisons. Front Med (Lausanne). 2020 Nov 23;7:601618.","10.3389/fmed.2020.601618","33330566","PMC7719815",2020]];
+const full=r=>r[1]+` doi: ${r[2]}.`+(r[3]?` PMID: ${r[3]}`+(r[4]?`; PMCID: ${r[4]}.`:'.'):'');
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function copy(t,b){const d=()=>{const o=b.textContent;b.textContent='Copiado';setTimeout(()=>b.textContent=o,1400)};navigator.clipboard.writeText(t).then(d).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.append(ta);ta.select();try{document.execCommand('copy');d()}catch(e){}ta.remove()})}
+const L=document.getElementById('list');
+L.innerHTML=R.map((r,i)=>`<li data-s="${esc((full(r)).toLowerCase())}"><span class="n">${i+1}</span><div><h2>${esc(r[0])}</h2><p class="cit">${esc(full(r))}</p></div><div class="row"><span class="chip tag">${r[5]}</span><a class="chip" href="https://doi.org/${r[2]}" target="_blank" rel="noopener">DOI</a>${r[3]?`<a class="chip" href="https://pubmed.ncbi.nlm.nih.gov/${r[3]}/" target="_blank" rel="noopener">PubMed</a>`:''}${r[4]?`<a class="chip" href="https://pmc.ncbi.nlm.nih.gov/articles/${r[4]}/" target="_blank" rel="noopener">Texto completo (PMC)</a>`:''}<button data-i="${i}">Copiar</button></div></li>`).join('');
+L.addEventListener('click',e=>{const b=e.target.closest('button');if(b)copy(full(R[b.dataset.i]),b)});
+document.getElementById('all').onclick=e=>copy(R.map((r,i)=>`${i+1}. ${full(r)}`).join('\n'),e.target);
+document.getElementById('q').oninput=e=>{const q=e.target.value.toLowerCase().trim();let n=0;L.querySelectorAll('li').forEach(li=>{const h=!li.dataset.s.includes(q);li.hidden=h;if(!h)n++});document.getElementById('empty').hidden=n>0};
+</script>
+</body>
+</html>
